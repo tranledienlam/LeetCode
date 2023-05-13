@@ -39,7 +39,6 @@ var twoSum = function (nums, target) {
     len = nums.length
 
     for (i = 0; i < len; i++) {
-        
     }
 };
 
