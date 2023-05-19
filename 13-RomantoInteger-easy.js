@@ -55,52 +55,74 @@ var romanToInt = function (s) {
         'M': 1000
     }
     result = 0
+    len = s.length
+    i = 0
+    // while (i < len) {
+    //     if (i != len - 1) {
+    //         switch (s[i]) {
+    //             case 'I':
+    //                 if (s[i + 1] == 'V') {
+    //                     result += 4
+    //                     i++
+    //                 } else if (s[i + 1] == 'X') {
+    //                     result += 9
+    //                     i++
+    //                 } else {
+    //                     result += roman[s[i]]
+    //                 }
+    //                 break;
+    
+    //             case 'X':
+    //                 if (s[i + 1] == 'L') {
+    //                     result += 40
+    //                     i++
+    //                 } else if (s[i + 1] == 'C') {
+    //                     result += 90
+    //                     i++
+    //                 } else {
+    //                     result += roman[s[i]]
+    //                 }
+    //                 break;
+    
+    //             case 'C':
+    //                 indexNext = i + 1
+    //                 if (s[i + 1] == 'D') {
+    //                     result += 400
+    //                     i++
+    //                 } else if (s[i + 1] == 'M') {
+    //                     result += 900
+    //                     i++
+    //                 } else {
+    //                     console.log('M')
+    //                     result += roman[s[i]]
+    //                 }
+    //                 break;
+    
+    //             default:
+    //                 result += roman[s[i]]
+    //                 break;
+    //         }
+    //     } else {
+    //         result += roman[s[i]]
+    //     }
 
-    for (let i = 0; i < s.length -1;i++) {
+    //     i++
+    // }
+    for (let i = 0; i < len; i++) {
+        const current = roman[s[i]];
+        const next = roman[s[i + 1]];
         
-        if (i < s.length - 1) {
-            switch (s[i]) {
-                case 'I':
-                    if (s[i+1] == 'V') {
-                        result += 4
-                    } else {
-                        result += roman[s[i]]
-                    }
-                    break;
-
-                case 'X':
-                    if (s[i+1] == 'L') {
-                        result += 40
-                    } else if (s[i+1] == 'C') {
-                        result += 90
-                    } else {
-                        result += roman[s[i]]
-                    }
-                    break;
-
-                case 'C':
-                    indexNext = i + 1
-                    if (s[i+1] == 'D') {
-                        result += 400
-                    } else if (s[i+1] == 'M') {
-                        result += 900
-                    } else {
-                        console.log('M')
-                        result += roman[s[i]]
-                    }
-                    break;
-
-                default:
-                    result += roman[s[i]]
-                    break;
-            }
+        if (next && current < next) {
+            result += next - current;
+            i++;
         } else {
-            result += roman[s[i]]
+            result += current;
         }
     }
     return result
+   
 };
 
-// console.log(romanToInt("III"))
+console.log(romanToInt("VX"))
 // console.log(romanToInt("LVIII"))
-console.log(romanToInt("MCMXC"))
+// console.log(romanToInt("MCMXCIV"))
