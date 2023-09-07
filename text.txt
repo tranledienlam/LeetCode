@@ -1,0 +1,6 @@
+TH1: el first if is close => break
+TH2: el first if is open 
+=> check el next is close, and close != close_of_first 
+=> break
+TH3: el first if is open 
+=> check el next is open => search of close of curr
